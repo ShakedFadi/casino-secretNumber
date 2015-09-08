@@ -8,9 +8,11 @@ import random
 
 def main():
     secretNumber = random.randint(1,10)
-    #print secretNumber
+    tries = 0
+
     os.system("clear")
-    print "Welcome to the 'Secret Number', new game at Ninja Casino!\n"
+    print "Welcome to the 'Secret Number', new game at Ninja Casino!\n" \
+          "You have 3 tries to guess our secret number!"
 
 
     while True:
@@ -21,18 +23,25 @@ def main():
                 print "\nYou chose number %i." % guess
                 print "Remember, you must input and integer between 1 and 10! Try again!"
             else:
+                tries += 1
                 print "\nYou chose number %i." % guess
-                break
+                if guess == secretNumber and tries < 3:
+                    print "Yay! You guessed the right number and have become a proud winner of coding class\n!"
+                    break
+                elif tries >= 3:
+                    print "Sry but all your guesses were wrong! Better luck next time!\n"
+                    break
+                else:
+                    print "Sry but your guess is wrong! Try again!\n"
 
         except ValueError:
             os.system("clear")
             print "Remember, you must input an integer between 1 and 10, not a letter or a word! Try again!"
 
 
-    if guess == secretNumber:
-        print "Yay! You guessed the right number and have become a proud winner of coding class\n!"
-    else:
-        print "Sry but your guess is wrong! Better luck next time!\n"
+
+        #print secretNumber
+        #print tries
 
 
 if __name__ == "__main__":
