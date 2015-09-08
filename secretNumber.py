@@ -25,15 +25,19 @@ def main():
             else:
                 tries += 1
                 print "\nYou chose number %i." % guess
-                if guess == secretNumber and tries < 3:
+                if guess == secretNumber and tries <= 3:
                     print "Yay! You guessed the right number and have become a proud winner of coding class\n!"
                     break
                 elif tries >= 3:
                     print "Sry but all your guesses were wrong! Better luck next time!\n"
                     break
                 else:
-                    print "Sry but your guess is wrong! Try again!\n"
-
+                    if guess < secretNumber:
+                        print "Sry but your guess is wrong! The number you are looking for is higher!\n" \
+                              "Try again!\n"
+                    elif guess > secretNumber:
+                        print "Sry but your guess is wrong! The number you are looking for is lower!\n" \
+                              "Try again!\n"
         except ValueError:
             os.system("clear")
             print "Remember, you must input an integer between 1 and 10, not a letter or a word! Try again!"
